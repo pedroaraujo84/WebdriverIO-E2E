@@ -15,7 +15,7 @@ class ToDoListPage {
     }
 
     markAsCompleted (todoIndex) {
-        this.todoList[todoIndex].$('button').click();
+        this.todoList[todoIndex].click();
     }
     
     open () {

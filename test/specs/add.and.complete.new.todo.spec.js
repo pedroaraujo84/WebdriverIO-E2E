@@ -9,6 +9,7 @@ describe('Given the user access to the To-Do-List Page', () => {
 
     describe('when the user add a new todo', () => {
         let todoLength
+        let newTodoIndex
 
         before(() => {
             todoLength = ToDoListPage.todoList.length;
@@ -16,19 +17,19 @@ describe('Given the user access to the To-Do-List Page', () => {
         });
 
         it('the user should see the todo list updated', () => {
-            const newTodoIndex = ToDoListPage.todoList.length - 1;
+            newTodoIndex = ToDoListPage.todoList.length - 1;
 
             expect(ToDoListPage.todoList).toBeElementsArrayOfSize(todoLength + 1);
             expect(ToDoListPage.getNewTodoText(newTodoIndex)).toBe('The new QA');
-            browser.pause(4000);
         });
-    });
 
-    describe('when the mark the new todo as completed', () => {
+        describe('when the user mark the new todo as completed', () => {
         
-        it('the user should see the new todo marked', () => {
-
-        });    
+            it('the user should see the new todo marked', () => {
+                ToDoListPage.markAsCompleted(newTodoIndex);
+                expect(ToDoListPage.todoList[newTodoIndex]).toHaveAttributeContaining('class', 'completed');
+            });    
+        });
     });
 });
 
