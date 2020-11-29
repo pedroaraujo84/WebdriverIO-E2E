@@ -3,7 +3,6 @@ class ToDoListPage {
     get todoListUI () { return $('#container') }
     get addNewTodo () { return $('#container > input[type=text]') }
     get todoList () { return $$('#container li') }
-    get todoListCompleted () { return $$('#container ul [class=completed]') }
 
     addTodo(description) {
         this.addNewTodo.setValue(description);
@@ -16,6 +15,11 @@ class ToDoListPage {
 
     markAsCompleted (todoIndex) {
         this.todoList[todoIndex].click();
+    }
+
+    isTodoCompleted(todoIndex) {
+        const classAttribute = this.todoList[todoIndex].getAttribute('class');
+        return classAttribute.includes('completed');
     }
     
     open () {

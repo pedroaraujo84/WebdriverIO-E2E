@@ -27,7 +27,7 @@ describe('Given the user access to the To-Do-List Page', () => {
         
             it('the user should see the new todo marked', () => {
                 ToDoListPage.markAsCompleted(newTodoIndex);
-                expect(ToDoListPage.todoList[newTodoIndex]).toHaveAttributeContaining('class', 'completed');
+                expect(ToDoListPage.isTodoCompleted(newTodoIndex)).toBe(true);
             });    
         });
     });
